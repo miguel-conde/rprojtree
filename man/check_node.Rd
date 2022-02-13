@@ -15,3 +15,7 @@ check_node(x)
 \description{
 check_node
 }
+\examples{
+rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
+
+}

@@ -15,3 +15,7 @@ print_template(template_name)
 \description{
 print_template
 }
+\examples{
+print_template("basic_template")
+
+}

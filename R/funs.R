@@ -9,7 +9,9 @@
 #' @import dplyr
 #' @importFrom magrittr %>%
 #'
-#' @examples
+#' @examples 
+#'  check_prj()
+#' 
 check_prj <- function() {
 
   basic_template %>% rjson::fromJSON()
@@ -23,6 +25,8 @@ check_prj <- function() {
 #' @export
 #'
 #' @examples
+#' available_templates()
+#' 
 available_templates <- function() {
   return(str_available_templates)
 }
@@ -35,6 +39,8 @@ available_templates <- function() {
 #' @export
 #'
 #' @examples
+#' print_template("basic_template")
+#' 
 print_template <- function(template_name) {
   template_name <- match.arg(template_name, str_available_templates)
   
@@ -50,6 +56,8 @@ print_template <- function(template_name) {
 #' @return
 #'
 #' @examples
+#' rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
+#' 
 check_node <- function(x) {
   
   print_on = FALSE
@@ -82,10 +90,18 @@ check_node <- function(x) {
 #' @return
 #' @export
 #' 
+#' @details 
+#' 
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' 
 #' @examples
+#' \dontrun{
+#' make_prj_tree(json_str = "basic_template", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+#' 
+#' rprojtree::make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+#' }
+#' 
 make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
   
   if (missing(json_str)) {

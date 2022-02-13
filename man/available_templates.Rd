@@ -12,3 +12,7 @@ available_templates()
 \description{
 available_templates
 }
+\examples{
+available_templates()
+
+}

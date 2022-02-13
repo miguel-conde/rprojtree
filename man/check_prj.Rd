@@ -12,3 +12,7 @@ check_prj()
 \description{
 Print access to important places in the project
 }
+\examples{
+ check_prj()
+
+}

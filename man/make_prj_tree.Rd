@@ -21,3 +21,14 @@ make_prj_tree(json_str, file, path = ".", verbose = FALSE)
 \description{
 make_prj_tree
 }
+\details{
+
+}
+\examples{
+\dontrun{
+make_prj_tree(json_str = "basic_template", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+
+rprojtree::make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+}
+
+}
