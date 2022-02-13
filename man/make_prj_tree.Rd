@@ -7,13 +7,13 @@
 make_prj_tree(json_str, file, path = ".", verbose = FALSE)
 }
 \arguments{
-\item{json_str}{}
+\item{json_str}{asdfasdfasdf}
 
-\item{file}{}
+\item{file}{asdfasdf}
 
-\item{path}{}
+\item{path}{asdfasdf}
 
-\item{verbose}{}
+\item{verbose}{afsdgasdf}
 }
 \value{
 
@@ -28,7 +28,7 @@ make_prj_tree
 \dontrun{
 make_prj_tree(json_str = "basic_template", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
 
-rprojtree::make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
 }
 
 }

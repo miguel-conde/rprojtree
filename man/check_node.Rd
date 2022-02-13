@@ -7,7 +7,7 @@
 check_node(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{asdfadsfdsa}
 }
 \value{
 

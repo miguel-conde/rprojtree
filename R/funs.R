@@ -10,7 +10,7 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples 
-#'  check_prj()
+#' rprojtree:::check_prj()
 #' 
 check_prj <- function() {
 
@@ -33,7 +33,7 @@ available_templates <- function() {
 
 #' print_template
 #'
-#' @param template_name 
+#' @param template_name asdfasdfasd
 #'
 #' @return
 #' @export
@@ -51,7 +51,7 @@ print_template <- function(template_name) {
 
 #' check_node
 #'
-#' @param x 
+#' @param x asdfadsfdsa
 #'
 #' @return
 #'
@@ -77,15 +77,15 @@ check_node <- function(x) {
     warning("Missing 'name'")
   } 
   
-  if (print_on == TRUE) print(names(x))
+  # if (print_on == TRUE) print(names(x))
 }
 
 #' make_prj_tree
 #'
-#' @param json_str 
-#' @param file 
-#' @param path 
-#' @param verbose
+#' @param json_str asdfasdfasdf
+#' @param file asdfasdf
+#' @param path asdfasdf
+#' @param verbose afsdgasdf
 #'
 #' @return
 #' @export
@@ -99,7 +99,7 @@ check_node <- function(x) {
 #' \dontrun{
 #' make_prj_tree(json_str = "basic_template", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
 #' 
-#' rprojtree::make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+#' make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
 #' }
 #' 
 make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {

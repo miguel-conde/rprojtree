@@ -13,6 +13,6 @@ check_prj()
 Print access to important places in the project
 }
 \examples{
- check_prj()
+rprojtree:::check_prj()
 
 }

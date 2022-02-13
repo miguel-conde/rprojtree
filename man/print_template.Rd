@@ -7,7 +7,7 @@
 print_template(template_name)
 }
 \arguments{
-\item{template_name}{}
+\item{template_name}{asdfasdfasd}
 }
 \value{
 
