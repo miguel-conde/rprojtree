@@ -112,6 +112,7 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
         file_full_name <- file.path(path, x$name)
         if (verbose == TRUE) cat(sprintf("Writing file %s\n", file_full_name))
         if (!file.exists(file_full_name)) file.create(file_full_name)
+        if ("content" %in% names(x)) writeLines(x$content, file_full_name)
       } else {
         if (x$type == "dir") {
           dir_full_name <- file.path(path, x$name)
@@ -120,7 +121,7 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
         }
       }
       
-      rest_of_tree_names <- names(x)[! names(x) %in% c("type", "name")]
+      rest_of_tree_names <- names(x)[! names(x) %in% c("type", "name", "content")]
       
       if (length(rest_of_tree_names) > 0) {
         
