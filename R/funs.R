@@ -1,27 +1,10 @@
 
-
-#' check_prj
-#'
-#' Print access to important places in the project
-#'
-#' @return
-#' 
-#' @import dplyr
-#' @importFrom magrittr %>%
-#'
-#' @examples 
-#' rprojtree:::check_prj()
-#' 
-check_prj <- function() {
-
-  basic_template %>% rjson::fromJSON()
-  
-
-}
-
 #' available_templates
 #'
-#' @return
+#' @return a character list with the names of the built-in tepmlates available 
+#' in the package
+#' 
+#' @encoding UTF-8
 #' @export
 #'
 #' @examples
@@ -32,11 +15,14 @@ available_templates <- function() {
 }
 
 #' print_template
+#' 
+#' print the files structure described by a builtin template or by a .json file 
 #'
-#' @param template_name asdfasdfasd
+#' @param template_name name of the builtin template or the .json file to use
 #'
-#' @return
 #' @export
+#' 
+#' @encoding UTF-8
 #'
 #' @examples
 #' print_template("basic_template")
@@ -50,10 +36,15 @@ print_template <- function(template_name) {
 }
 
 #' check_node
+#' 
+#' Verify node integrity while navigating the structure tree
 #'
-#' @param x asdfadsfdsa
+#' @param x \\code{list}, the node to check
 #'
-#' @return
+#' @return if the node is ok, the node; else, an error is raised.
+#' 
+#' @keywords internal
+#' @encoding UTF-8
 #'
 #' @examples
 #' rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
@@ -87,25 +78,50 @@ check_node <- function(x) {
 }
 
 #' make_prj_tree
+#' 
+#' Create a files structure from a builtin template or from a personalised
+#' template provided as .json file
 #'
-#' @param json_str asdfasdfasdf
-#' @param file asdfasdf
-#' @param path asdfasdf
-#' @param verbose afsdgasdf
+#' @param json_str string with the name of the builtin template to use
+#' @param file string for the name of the .json file describing a personalised 
+#' files structure to use as template
+#' @param path string containing which directory to use as root of the files 
+#' structure to create
+#' @param verbose logical, show or not info while creating th e files structure
 #'
-#' @return
 #' @export
 #' 
+#' @encoding UTF-8
+#' 
 #' @details 
+#' 
+#' \itemize{
+#' \item Only one of \code{json_str} or \code{file} must be supplied. 
+#' \item An error is raised if any node in the .json structure is found malformed
+#' }
+#' 
+#' JSON format: 
+#' \itemize{
+#' \item All the nodes must have a \code{type} and a \code{name}. Allowed 
+#' types are \code{dir}, for directories, and \code{file} for files. 
+#' \item All the directory nodes can contain any number of subnodes for subdirectories
+#' \item The file nodes can include a \code{content} field for the text the file should
+#' contain.
+#' }
+#' 
+#' @seealso \code{\link[rprojtree:print_template]{rprojtree::print_template}}
+#' 
 #' 
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' 
 #' @examples
 #' \dontrun{
-#' make_prj_tree(json_str = "basic_template", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+#' root_path = "..."
+#' make_prj_tree(json_str = "basic_template", path = root_path)
 #' 
-#' make_prj_tree(file = "C:/Users/migue/OneDrive/Documentos/rprj_tree_tst.json", path = "c:/Users/migue/Documents/tmp/rprj_tst/")
+#' my_template <- ".../sample_template.json"
+#' make_prj_tree(file = my_template, path = root_path)
 #' }
 #' 
 make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
@@ -156,7 +172,5 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
   }
   
   navigate(json_list = rjson::fromJSON(json_txt), path = path)
-  
-  # return(0)
   
 }

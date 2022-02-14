@@ -18,3 +18,7 @@ test_that("One of json_str or file is needed", {
 test_that("Only one of json_str or file is needed", {
   testthat::expect_error(make_prj_tree(json_str = "a", file = "b"))
 })
+
+test_that("no error is raised printing a well formatted template", {
+  testthat::expect_error(print_template("basic_template"), regexp = NA)
+})

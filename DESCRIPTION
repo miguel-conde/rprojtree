@@ -1,11 +1,11 @@
 Package: rprojtree
 Type: Package
 Title: Create folders and files structure for data science projects
-Version: 0.1.0
+Version: 1.0.0
 Author: Miguel Conde
 Maintainer: Miguel Conde <miguelco2000@gmail.com>
-Description: Use json templates to create folders and files structure for data science projects
-License: What license is it under?
+Description: Use json templates to create folders and files structure for data science projects. Includes builtin templates and accepts your own as .json files.
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
