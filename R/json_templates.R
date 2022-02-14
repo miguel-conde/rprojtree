@@ -14,8 +14,8 @@ basic_template <- paste0('{
         },
 "data": {
           "type": "dir", "name": "data",
-          "raw": {"type": "dir", "name": "datalake"},
-          "clean": {"type": "dir", "name": "datawarehouse"}
+          "raw": {"type": "dir", "name": "raw"},
+          "clean": {"type": "dir", "name": "clean"}
         },
 "outputs": {
             "type": "dir", "name": "outputs",
