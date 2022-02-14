@@ -6,3 +6,5 @@ rprojtree.Rproj
 renv/
 _curlrc
 .Renviron
+.Rprofile
+renv.lock
