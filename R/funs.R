@@ -60,24 +60,30 @@ print_template <- function(template_name) {
 #' 
 check_node <- function(x) {
   
-  print_on = FALSE
+  error_on <-  FALSE
+  error_str <- ""
   
   if (is.null(x$type)) {
-    print_on <- TRUE
-    warning("Missing 'type'")
+    error_on <- TRUE
+    error_str <- paste(error_str, "Missing 'type'.\n")
   } else {
     if (!x$type %in% c("dir", "file")) {
-      print_on <- TRUE
-      warning("'type' must be one in c('dir', file')")
+      error_on <- TRUE
+      error_str <- paste(error_str, "'type' must be one in c('dir', 'file').\n")
     }
   }
   
   if (is.null(x$name)) {
-    print_on <- TRUE
-    warning("Missing 'name'")
+    error_on <- TRUE
+    error_str <- paste(error_str, "Missing 'name'.\n")
   } 
   
-  # if (print_on == TRUE) print(names(x))
+  if (error_on == TRUE) {
+    error_str <- paste(error_str, "Fields found:", paste(names(x), collapse = ", "), "\n")
+    stop(error_str)
+  }
+  
+  return(x)
 }
 
 #' make_prj_tree
@@ -122,7 +128,7 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
     
     json_list %>% lapply(function(x, path) {
       
-      check_node(x)
+      x <- check_node(x)
       
       if (x$type == "file") {
         file_full_name <- file.path(path, x$name)

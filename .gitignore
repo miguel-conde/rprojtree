@@ -4,3 +4,5 @@
 .Ruserdata
 rprojtree.Rproj
 renv/
+_curlrc
+.Renviron
