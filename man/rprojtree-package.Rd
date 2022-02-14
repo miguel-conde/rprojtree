@@ -14,6 +14,6 @@ for data science projects
 For more details see the tutorial vignette:
 
 \itemize{
-  \item \code{vignette("bayesm3_tutorial", package = "bayesm3")}
+  \item \code{vignette("rprojtree-primer", package = "rprojtree")}
 }
 }

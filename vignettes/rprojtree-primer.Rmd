@@ -1,0 +1,40 @@
+---
+title: "rprojtree-primer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rprojtree-primer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rprojtree)
+```
+
+# Quick start
+
+```{r}
+available_templates()
+```
+
+```{r}
+print_template("basic_template")
+```
+
+```{r, eval = FALSE}
+root_path = "..."
+make_prj_tree(json_str = "basic_template", path = root_path)
+
+my_template <- ".../sample_template.json"
+make_prj_tree(file = my_template, path = root_path)
+```
+
+
+
