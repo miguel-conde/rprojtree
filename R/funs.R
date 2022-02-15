@@ -7,7 +7,7 @@
 #' @details 
 #' These are the structures defined by the currently available builtin templates:
 #' 
-#'    \itemize {
+#'    \itemize{
 #'      \item \bold{\code{basic_template}}
 #'         \itemize{
 #'            \item \code{data/}
@@ -161,7 +161,7 @@ check_node <- function(x) {
 #' contain.
 #' }
 #' 
-#' @seealso \code{\link[rprojtree:print_template]{rprojtree::print_template}}
+#' @seealso \code{\link[rprojtree:print_template]{rprojtree::print_template}}, \code{\link[rprojtree:available_templates]{rprojtree::available_templates}}
 #' 
 #' 
 #' @import dplyr

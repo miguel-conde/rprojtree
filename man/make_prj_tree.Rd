@@ -48,5 +48,5 @@ make_prj_tree(file = my_template, path = root_path)
 
 }
 \seealso{
-\code{\link[rprojtree:print_template]{rprojtree::print_template}}
+\code{\link[rprojtree:print_template]{rprojtree::print_template}}, \code{\link[rprojtree:available_templates]{rprojtree::available_templates}}
 }

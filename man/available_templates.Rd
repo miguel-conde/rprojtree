@@ -17,7 +17,7 @@ available_templates
 \details{
 These are the structures defined by the currently available builtin templates:
 
-   \itemize {
+   \itemize{
      \item \bold{\code{basic_template}}
         \itemize{
            \item \code{data/}
