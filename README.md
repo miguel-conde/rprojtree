@@ -6,7 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rprojtree is to …
+The goal of rprojtree is to make it easy to structure data science
+projects in a convenient way.
+
+rprojtree contains templates (in the current version, only one:
+“basic_template”) of ready-to-use project structures. But it also allows
+you to use custom templates by supplying them as .json files.
+
+In this way rprojtree makes it easy to create appropriate structures but
+does so in an agnostic way, without imposing a particular structure
+model.
 
 ## Installation
 
@@ -20,36 +29,117 @@ devtools::install_github("miguel-conde/rprojtree")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to create the structure of
+directories and files for your project:
 
 ``` r
 library(rprojtree)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+You can find out which templates are available in the package using:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+available_templates()
+#> [1] "basic_template"
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+Currently there is only one template (“bais_template”). These templates
+have .json format. You can view them using:
 
-You can also embed plots, for example:
+``` r
+print_template("basic_template")
+#> {
+#>     "R": {
+#>         "type": "dir",
+#>         "name": "R",
+#>         "global_R": {
+#>             "type": "file",
+#>             "name": "global.R",
+#>             "content": "DIR_DATA <- here::here('data')\n\nDIR_RAW_DATA <- file.path(DIR_DATA, 'raw')\nDIR_CLEAN_DATA <- file.path(DIR_DATA, 'clean')\n\nDIR_OUTPUTS <- here::here('outputs')\n\nDIR_OUTPUTS_REPORTS <- file.path(DIR_OUTPUTS, 'reports')\nDIR_OUTPUTS_FILES <- file.path(DIR_OUTPUTS, 'files')"
+#>         },
+#>         "src": {
+#>             "type": "dir",
+#>             "name": "src"
+#>         },
+#>         "scripts": {
+#>             "type": "dir",
+#>             "name": "scripts"
+#>         }
+#>     },
+#>     "docs": {
+#>         "type": "dir",
+#>         "name": "docs"
+#>     },
+#>     "data": {
+#>         "type": "dir",
+#>         "name": "data",
+#>         "raw": {
+#>             "type": "dir",
+#>             "name": "raw"
+#>         },
+#>         "clean": {
+#>             "type": "dir",
+#>             "name": "clean"
+#>         }
+#>     },
+#>     "outputs": {
+#>         "type": "dir",
+#>         "name": "outputs",
+#>         "reports": {
+#>             "type": "dir",
+#>             "name": "reports"
+#>         },
+#>         "files": {
+#>             "type": "dir",
+#>             "name": "files"
+#>         }
+#>     }
+#> }
+#> 
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+This template creates the basic structure:
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+    <root_path>/data/
+    <root_path>/data/clean/
+    <root_path>/data/raw/
+    <root_path>/docs/
+    <root_path>/outputs/
+    <root_path>/outputs/files/
+    <root_path>/outputs/reports/
+    <root_path>/R
+    <root_path>/R/global.R
+    <root_path>/R/src/
+    <root_path>/R/scripts/
+
+It is possible to indicate the text with which a file should be created.
+In the case of “basic template” the file
+`<root_path>/R/global.Rglobal.R` will contain:
+
+    DIR_DATA <- here::here('data')
+
+    DIR_RAW_DATA <- file.path(DIR_DATA, 'raw')
+    DIR_CLEAN_DATA <- file.path(DIR_DATA, 'clean')
+
+    DIR_OUTPUTS <- here::here('outputs')
+
+    DIR_OUTPUTS_REPORTS <- file.path(DIR_OUTPUTS, 'reports')
+    DIR_OUTPUTS_FILES <- file.path(DIR_OUTPUTS, 'files')
+
+To finally create the project structure you can choose one of the built
+in templates:
+
+``` r
+root_path = "..." # Indicate the root directory of the structure
+
+# Use a builtin template
+make_prj_tree(json_str = "basic_template", path = root_path)
+```
+
+Or provide your own in a .json file:
+
+``` r
+# Use your own .json file
+my_template <- ".../sample_template.json" 
+make_prj_tree(file = my_template, path = root_path)
+```
