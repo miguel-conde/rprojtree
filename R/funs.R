@@ -139,6 +139,7 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
   }
   
   if (!dir.exists(path)) dir.create(path)
+  else warning(paste("Directory", path, "already exists - nothing done"))
   
   navigate <- function(json_list, path) {
     
@@ -149,13 +150,18 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
       if (x$type == "file") {
         file_full_name <- file.path(path, x$name)
         if (verbose == TRUE) cat(sprintf("Writing file %s\n", file_full_name))
-        if (!file.exists(file_full_name)) file.create(file_full_name)
-        if ("content" %in% names(x)) writeLines(x$content, file_full_name)
+        if (!file.exists(file_full_name)) {
+          file.create(file_full_name)
+          if ("content" %in% names(x)) writeLines(x$content, file_full_name)
+        } else {
+          warning(paste("File", file_full_name, "already exists - nothing done"))
+        }
       } else {
         if (x$type == "dir") {
           dir_full_name <- file.path(path, x$name)
           if (verbose == TRUE) cat(sprintf("Creating dir %s\n", dir_full_name))
           if (!dir.exists(dir_full_name)) dir.create(dir_full_name)
+          else warning(paste("Directory", dir_full_name, "already exists - nothing done"))
         }
       }
       
