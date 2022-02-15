@@ -1,8 +1,60 @@
 
 #' available_templates
 #'
-#' @return a character list with the names of the built-in tepmlates available 
+#' @return A character list with the names of the built-in tepmlates available 
 #' in the package
+#' 
+#' @details 
+#' These are the structures defined by the currently available builtin templates:
+#' 
+#'    \itemize {
+#'      \item \bold{\code{basic_template}}
+#'         \itemize{
+#'            \item \code{data/}
+#'               \itemize{
+#'                  \item \code{clean/}
+#'                  \item \code{raw/}
+#'                  }
+#'            \item \code{docs/}
+#'            \item \code{outputs/}
+#'               \itemize{
+#'                  \item \code{files/}
+#'                  \item \code{reports/}
+#'                  }
+#'            \item \code{R/}
+#'               \itemize{
+#'                  \item \code{global.R}
+#'                  \item \code{scripts/}
+#'                  \item \code{src/}
+#'                  }
+#'         }
+#'         \item \bold{\code{py_template}}
+#'         \itemize{
+#'           \item \code{data/}
+#'           \itemize{
+#'             \item \code{clean/}
+#'             \item \code{raw/}
+#'           }
+#'           \item \code{docs/}
+#'           \item \code{outputs/}
+#'           \itemize{
+#'             \item \code{files/}
+#'             \item \code{reports/}
+#'           }
+#'           \item \code{PYTHON/}
+#'           \itemize{
+#'             \item \code{setup.py}
+#'             \item \code{notebooks/}
+#'             \item \code{projpkj/}
+#'             \itemize{
+#'               \item \code{__init__.py}
+#'             }
+#'             \item \code{scripts/}
+#'             \item \code{tests/}
+#'           }
+#'         }
+#'      \item \bold{\code{py_r_template}}: a combination of \code{basic_template} and \code{py_template}
+#' }
 #' 
 #' @encoding UTF-8
 #' @export
