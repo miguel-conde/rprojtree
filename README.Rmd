@@ -52,14 +52,15 @@ You can find out which templates are available in the package using:
 available_templates()
 ```
 
-Currently there is only one template ("bais_template"). These templates have .json 
+Currently there are `r length(available_templates())` templates 
+(`r paste(available_templates(), collapse = ", ")`). These templates have .json 
 format. You can view them using:
 
 ```{r}
 print_template("basic_template")
 ```
 
-This template creates the basic structure:
+The "basic_template" template creates this basic structure:
 
 ```
 <root_path>/data/
@@ -91,7 +92,7 @@ DIR_OUTPUTS_REPORTS <- file.path(DIR_OUTPUTS, 'reports')
 DIR_OUTPUTS_FILES <- file.path(DIR_OUTPUTS, 'files')
 ```
 
-To finally create the project structure you can choose one of the built in templates:
+To finally create the project structure you can choose any of the built in templates:
 
 ```{r, eval = FALSE}
 root_path = "..." # Indicate the root directory of the structure

@@ -40,11 +40,12 @@ You can find out which templates are available in the package using:
 
 ``` r
 available_templates()
-#> [1] "basic_template"
+#> [1] "basic_template" "py_template"    "py_r_template"
 ```
 
-Currently there is only one template (“bais_template”). These templates
-have .json format. You can view them using:
+Currently there are 3 templates (basic_template, py_template,
+py_r\_template). These templates have .json format. You can view them
+using:
 
 ``` r
 print_template("basic_template")
@@ -98,7 +99,7 @@ print_template("basic_template")
 #> 
 ```
 
-This template creates the basic structure:
+The “basic_template” template creates this basic structure:
 
     <root_path>/data/
     <root_path>/data/clean/
@@ -126,7 +127,7 @@ In the case of “basic template” the file
     DIR_OUTPUTS_REPORTS <- file.path(DIR_OUTPUTS, 'reports')
     DIR_OUTPUTS_FILES <- file.path(DIR_OUTPUTS, 'files')
 
-To finally create the project structure you can choose one of the built
+To finally create the project structure you can choose any of the built
 in templates:
 
 ``` r
