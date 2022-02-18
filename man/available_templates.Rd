@@ -8,7 +8,7 @@
 available_templates()
 }
 \value{
-A character list with the names of the built-in tepmlates available 
+A character list with the names of the built-in templates available 
 in the package
 }
 \description{

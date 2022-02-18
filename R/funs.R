@@ -1,7 +1,7 @@
 
 #' available_templates
 #'
-#' @return A character list with the names of the built-in tepmlates available 
+#' @return A character list with the names of the built-in templates available 
 #' in the package
 #' 
 #' @details 
@@ -131,15 +131,15 @@ check_node <- function(x) {
 
 #' make_prj_tree
 #' 
-#' Create a files structure from a builtin template or from a personalised
+#' Create a files structure from a builtin template or from a customized
 #' template provided as .json file
 #'
 #' @param json_str string with the name of the builtin template to use
-#' @param file string for the name of the .json file describing a personalised 
+#' @param file string for the name of the .json file describing a customized 
 #' files structure to use as template
 #' @param path string containing which directory to use as root of the files 
 #' structure to create
-#' @param verbose logical, show or not info while creating th e files structure
+#' @param verbose logical, show or not info while creating the files structure
 #'
 #' @export
 #' 
@@ -156,7 +156,7 @@ check_node <- function(x) {
 #' \itemize{
 #' \item All the nodes must have a \code{type} and a \code{name}. Allowed 
 #' types are \code{dir}, for directories, and \code{file} for files. 
-#' \item All the directory nodes can contain any number of subnodes for subdirectories
+#' \item All the directory nodes can contain any number of sub-nodes for subdirectories
 #' \item The file nodes can include a \code{content} field for the text the file should
 #' contain.
 #' }
