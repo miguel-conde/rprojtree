@@ -70,11 +70,18 @@ available_templates <- function() {
 #' 
 #' print the files structure described by a builtin template or by a .json file 
 #'
-#' @param template_name name of the builtin template or the .json file to use
+#' @param template_name name of the builtin template or the .json file to use.
+#' 
+#' @return a \code{JSON} class object as returned by \code{jsonlite::prettify}.
+#' 
+#' @details \code{\link[jsonlite:prettify]{jsonlite::prettify}} is internally 
+#' used to add indentation to the JSON content.
 #'
 #' @export
 #' 
 #' @encoding UTF-8
+#' 
+#' @seealso \code{\link[jsonlite:prettify]{jsonlite::prettify}}
 #'
 #' @examples
 #' print_template("basic_template")
@@ -98,10 +105,11 @@ print_template <- function(template_name) {
 #' @keywords internal
 #' @encoding UTF-8
 #'
-#' @examples
-#' rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
 #' 
 check_node <- function(x) {
+  
+  # Example:
+  # rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
   
   error_on <-  FALSE
   error_str <- ""
@@ -145,6 +153,9 @@ check_node <- function(x) {
 #' 
 #' @encoding UTF-8
 #' 
+#' @return invisible, an R list that corresponds to the JSON object in 
+#'         \code{json_str}, as returned by \code{\link[rjson:fromJSON]{rjson::fromJSON}}.
+#' 
 #' @details 
 #' 
 #' \itemize{
@@ -161,7 +172,9 @@ check_node <- function(x) {
 #' contain.
 #' }
 #' 
-#' @seealso \code{\link[rprojtree:print_template]{rprojtree::print_template}}, \code{\link[rprojtree:available_templates]{rprojtree::available_templates}}
+#' @seealso \code{\link[rprojtree:print_template]{rprojtree::print_template}}, 
+#' \code{\link[rprojtree:available_templates]{rprojtree::available_templates}},
+#' \code{\link[rjson:fromJSON]{rjson::fromJSON}}
 #' 
 #' 
 #' @import dplyr
@@ -172,7 +185,7 @@ check_node <- function(x) {
 #' root_path = "..."
 #' make_prj_tree(json_str = "basic_template", path = root_path)
 #' 
-#' my_template <- ".../sample_template.json"
+#' my_template <- ".../some_template.json"
 #' make_prj_tree(file = my_template, path = root_path)
 #' }
 #' 
@@ -225,8 +238,9 @@ make_prj_tree <- function(json_str, file, path = ".", verbose = FALSE) {
         navigate(rest_of_tree, file.path(path, x$name))
         
       }
-    }, path) %>% 
-      invisible()
+    }, path) 
+    
+    return(invisible(json_list))
   }
   
   navigate(json_list = rjson::fromJSON(json_txt), path = path)

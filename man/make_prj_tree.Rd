@@ -18,6 +18,10 @@ structure to create}
 
 \item{verbose}{logical, show or not info while creating the files structure}
 }
+\value{
+invisible, an R list that corresponds to the JSON object in 
+        \code{json_str}, as returned by \code{\link[rjson:fromJSON]{rjson::fromJSON}}.
+}
 \description{
 Create a files structure from a builtin template or from a customized
 template provided as .json file
@@ -42,11 +46,13 @@ contain.
 root_path = "..."
 make_prj_tree(json_str = "basic_template", path = root_path)
 
-my_template <- ".../sample_template.json"
+my_template <- ".../some_template.json"
 make_prj_tree(file = my_template, path = root_path)
 }
 
 }
 \seealso{
-\code{\link[rprojtree:print_template]{rprojtree::print_template}}, \code{\link[rprojtree:available_templates]{rprojtree::available_templates}}
+\code{\link[rprojtree:print_template]{rprojtree::print_template}}, 
+\code{\link[rprojtree:available_templates]{rprojtree::available_templates}},
+\code{\link[rjson:fromJSON]{rjson::fromJSON}}
 }

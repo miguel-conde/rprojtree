@@ -17,3 +17,10 @@ For more details see the tutorial vignette:
   \item \code{vignette("rprojtree-primer", package = "rprojtree")}
 }
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/miguel-conde/rprojtree}
+}
+
+}

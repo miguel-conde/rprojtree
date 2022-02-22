@@ -16,8 +16,4 @@ if the node is ok, the node; else, an error is raised.
 \description{
 Verify node integrity while navigating the structure tree
 }
-\examples{
-rprojtree:::check_node(rjson::fromJSON('{"type":"file", "name": "global.R"}'))
-
-}
 \keyword{internal}

@@ -8,12 +8,22 @@
 print_template(template_name)
 }
 \arguments{
-\item{template_name}{name of the builtin template or the .json file to use}
+\item{template_name}{name of the builtin template or the .json file to use.}
+}
+\value{
+a \code{JSON} class object as returned by \code{jsonlite::prettify}.
 }
 \description{
 print the files structure described by a builtin template or by a .json file
 }
+\details{
+\code{\link[jsonlite:prettify]{jsonlite::prettify}} is internally 
+used to add indentation to the JSON content.
+}
 \examples{
 print_template("basic_template")
 
+}
+\seealso{
+\code{\link[jsonlite:prettify]{jsonlite::prettify}}
 }
