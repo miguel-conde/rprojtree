@@ -1,0 +1,92 @@
+---
+title: "rprojtree-primer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rprojtree-primer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rprojtree)
+```
+
+# Quick start
+
+This is a basic example which shows you how to create the structure of 
+directories and files for your project:
+
+```{r example}
+library(rprojtree)
+```
+
+You can find out which templates are available in the package using:
+
+```{r}
+available_templates()
+```
+
+Currently there are `r length(available_templates())` templates 
+(`r paste(available_templates(), collapse = ", ")`). These templates have .json 
+format. You can view them using:
+
+```{r}
+print_template("basic_template")
+```
+
+The "basic_template" template creates this basic structure:
+
+```
+<root_path>/data/
+<root_path>/data/clean/
+<root_path>/data/raw/
+<root_path>/docs/
+<root_path>/outputs/
+<root_path>/outputs/files/
+<root_path>/outputs/reports/
+<root_path>/R
+<root_path>/R/global.R
+<root_path>/R/src/
+<root_path>/R/scripts/
+```
+
+It is possible to indicate the text with which a file should be created. In
+the case of "basic template" the file `<root_path>/R/global.Rglobal.R` will
+contain:
+
+```
+DIR_DATA <- here::here('data')
+
+DIR_RAW_DATA <- file.path(DIR_DATA, 'raw')
+DIR_CLEAN_DATA <- file.path(DIR_DATA, 'clean')
+
+DIR_OUTPUTS <- here::here('outputs')
+
+DIR_OUTPUTS_REPORTS <- file.path(DIR_OUTPUTS, 'reports')
+DIR_OUTPUTS_FILES <- file.path(DIR_OUTPUTS, 'files')
+```
+
+To finally create the project structure you can choose any of the built in templates:
+
+```{r, eval = FALSE}
+root_path = "..." # Indicate the root directory of the structure
+
+# Use a builtin template
+make_prj_tree(json_str = "basic_template", path = root_path)
+```
+
+
+Or provide your own in a .json file:
+
+```{r, eval = FALSE}
+# Use your own .json file
+my_template <- ".../sample_template.json" 
+make_prj_tree(file = my_template, path = root_path)
+```
