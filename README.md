@@ -27,6 +27,12 @@ You can install the development version of rprojtree from
 devtools::install_github("miguel-conde/rprojtree")
 ```
 
+or the CRAN version with:
+
+``` r
+install.packages("rprojtree")
+```
+
 ## Example
 
 This is a basic example which shows you how to create the structure of
